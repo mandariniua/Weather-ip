@@ -1,0 +1,34 @@
+{
+  "title": "IpWeather",
+  "description": "elastic.io",
+  "docsUrl": "https://github.com/elasticio/petstore-component-nodejs",
+  "credentials": {
+    "fields": {
+      "apiKey": {
+        "label": "API key",
+        "required": true,
+        "viewClass": "TextFieldView"
+      }
+    }
+  },
+  "triggers": {
+    "ipWeather": {
+      "main": "./Backend/ip.js",
+      "type": "polling",
+      "title": "Show weather",
+      "fields": {
+        "status": {
+          "label": "Status",
+          "required": true,
+          "viewClass": "SelectView",
+          "model": {
+            "available": "Available",
+            "pending": "Pending",
+            "sold": "Sold"
+          },
+          "prompt": "Status"
+        }
+      }
+    }
+  }
+}
