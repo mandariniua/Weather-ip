@@ -18,7 +18,9 @@
       "title": "Show weather",
       "fields": {
         "weatherInfo": {
-          "ip": "192.100.150.10"
+          "ip": "192.100.150.10",
+          "required": true,
+          "viewClass": "SelectView"
           }
         },
         "metadata": {
