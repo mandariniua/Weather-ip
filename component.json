@@ -1,7 +1,7 @@
 {
   "title": "IpWeather",
   "description": "elastic.io",
-  "docsUrl": "",
+  "docsUrl": "https://github.com/elasticio/petstore-component-nodejs",
   "credentials": {
     "fields": {
       "apiKey": {
@@ -25,11 +25,8 @@
             "weather": "Weather"
           },
           "prompt": "Status"
-        },
-        "metadata": {
-          "out": {}
+        }
       }
-
     }
   }
 }
