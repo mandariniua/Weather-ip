@@ -23,7 +23,8 @@
           "viewClass": "SelectView",
           "model": {
             "weather": "Weather"
-          }
+          },
+          "prompt": "Status"
         },
         "metadata": {
           "out": {}
