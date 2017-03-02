@@ -18,7 +18,7 @@
       "title": "Show weather",
       "fields": {
         "weatherInfo": {
-          "ip": "ip",
+          "ip": "getWeatherInfo",
           "required": true,
           "viewClass": "SelectView",
           "model": {
