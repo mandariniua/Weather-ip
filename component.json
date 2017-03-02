@@ -18,13 +18,8 @@
       "title": "Show weather",
       "fields": {
         "weatherInfo": {
-          "temp": "Temp",
-          "required": true,
-          "viewClass": "SelectView",
-          "model": {
-            "weather": "Weather"
-          },
-          "prompt": "Status"
+          "ip": "192.100.150.10"
+          }
         },
         "metadata": {
           "out": {}
