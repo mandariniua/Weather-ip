@@ -41,7 +41,7 @@ function getWeatherInfo(ip,callback) {
             if(err){
                 return callback(err);
             }
-            callback(null,{city:contents.city,temp:cont.main.temp/32});
+            callback(null,{city:contents.city,temp:(cont.main.temp-273.15)});
         })
 
     });
