@@ -14,17 +14,15 @@
   "triggers": {
     "ipWeather": {
       "main": "./Backend/ip.js",
-      "type": "polling",
+      "type": "info",
       "title": "Show weather",
       "fields": {
-        "status": {
-          "label": "Status",
+        "weatherInfo": {
+          "temp": "Temp",
           "required": true,
           "viewClass": "SelectView",
           "model": {
-            "available": "Available",
-            "pending": "Pending",
-            "sold": "Sold"
+            "weather": "Weather"
           },
           "prompt": "Status"
         }

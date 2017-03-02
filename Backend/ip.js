@@ -14,6 +14,7 @@ function getIpInfo(ip, callback) {
 
         var obj = JSON.parse(body);
         callback(null, obj);
+        return;
     });
 }
 
@@ -26,18 +27,24 @@ function  getWeather(city, countryCode, callback) {
         }
         var obj = JSON.parse(body);
         callback(null,obj);
+        return;
     });
 }
 
 function getWeatherInfo(ip,callback) {
+
     getIpInfo(ip,function (err,contents) {
-        callback(contents.city, contents.countryCode);
+        if(err){
+            return callback(err);
+        }
+        getWeather(contents.city,contents.countryCode,function (err,cont) {
+            if(err){
+                return callback(err);
+            }
+            callback(null,{city:contents.city,temp:cont.main.temp/32});
+        })
+
     });
-    var city = ip.city;
-    var countryCode = ip.countryCode;
-    getWeather(city,countryCode,function (err,contents) {
-        callback (null,contents.main.temp/32);
-    })
 }
 
 function ipWeather(req, res) {
@@ -45,7 +52,7 @@ function ipWeather(req, res) {
 
     getWeatherInfo(ip,function (err, content) {
         if (err){
-            console.error(err);
+            console.error('My error:',err);
             res.status(500).send('Something broke!');
             return;
         }
