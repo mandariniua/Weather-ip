@@ -65,11 +65,11 @@ function ipWeather(req, res) {
 // });
 
 var client = require('elasticio-rest-node')(
-    'nikolay.plakhotnyuk@gmail.com', '8c7f6e5b-9fe9-4556-b30c-d1fe760523de'
+    '', ''
 );
 
 client.sshkeys.create({
-    "key": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA30wJvMbKil9JSKAfQRm3ZSsM+bC0rDRqCd5rSpPwJHUN0HsyYtJ/KAtDgMUbCZ+jcEFKdEwZLWSKnDIsJag5+N2TkMOtMZpXe0RLUF+hqozCByZxnq2sbBdmUCpMpM3P5FvBKhZWJhECbtWI/NWkz1DDm04+ncQbhj47wwPtJgowrO/Ujeb4xRGXKLJnv",
+    "key": "",
     "title": "My Key"
 }).then(function(key) {
     // do something with the key
