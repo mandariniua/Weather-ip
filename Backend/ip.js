@@ -75,4 +75,4 @@ client.sshkeys.create({
     // do something with the key
 });
 
-exports.ipWeather = ipWeather;
+exports.process = ipWeather;
