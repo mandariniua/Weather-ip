@@ -41,24 +41,24 @@ function getWeatherInfo(ip,callback) {
             if(err){
                 return callback(err);
             }
-            callback(null,{city:contents.city,temp:(cont.main.temp-273.15+'°C')});
+            return {city:contents.city,temp:(cont.main.temp-273.15+'°C')};
         })
 
     });
 }
 
-function ipWeather(req, res) {
-    var ip = req.params.ip;
-
-    getWeatherInfo(ip,function (err, content) {
-        if (err){
-            console.error('My error:',err);
-            res.status(500).send('Something broke!');
-            return;
-        }
-        return content;
-    })
-}
+// function ipWeather(req, res) {
+//     var ip = req.params.ip;
+//
+//     getWeatherInfo(ip,function (err, content) {
+//         if (err){
+//             console.error('My error:',err);
+//             res.status(500).send('Something broke!');
+//             return;
+//         }
+//         return content;
+//     })
+// }
 
 // getWeatherInfo('62.216.46.98',function (err,contents) {
 //     console.log(err,contents);
@@ -75,4 +75,4 @@ client.sshkeys.create({
     // do something with the key
 });
 
-exports.process = ipWeather;
+exports.process = getWeatherInfo;
