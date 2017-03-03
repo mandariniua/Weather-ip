@@ -41,7 +41,7 @@ function getWeatherInfo(ip,callback) {
             if(err){
                 return callback(err);
             }
-            callback(null,{city:contents.city,temp:(cont.main.temp-273.15+'°C')});
+            return {city:contents.city,temp:(cont.main.temp-273.15+'°C')};
         })
 
     });
@@ -56,7 +56,7 @@ function ipWeather(req, res) {
             res.status(500).send('Something broke!');
             return;
         }
-        res.send(content);
+        return content;
     })
 }
 
