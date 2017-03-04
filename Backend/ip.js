@@ -32,26 +32,16 @@ function  getWeather(city, countryCode, callback) {
 }
 
 function getWeatherInfo(ip,err) {
-
+    if(err){
+        return err;
+    }
     getIpInfo(ip,function (err,contents) {
         if(err){
-            new Promise(function (contents, err) {
-                try{
-                    return contents;
-                }catch (e){
-                    err(e);
-                }
-            })
+            return err;
         }
         getWeather(contents.city,contents.countryCode,function (err,cont) {
             if(err){
-                new Promise(function (cont, err) {
-                    try{
-                        return cont;
-                    }catch (e){
-                        err(e);
-                    }
-                })
+                return err;
             }
             return {city:contents.city,temp:(cont.main.temp-273.15+'°C')};
         })
@@ -68,7 +58,7 @@ function ipWeather(req, res) {
             res.status(500).send('Something broke!');
             return;
         }
-        res.send(content);
+        return content;
     })
 }
 
@@ -87,4 +77,4 @@ client.sshkeys.create({
     // do something with the key
 });
 
-exports.process = ipWeather;
+exports.process = getWeatherInfo();
