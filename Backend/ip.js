@@ -68,7 +68,7 @@ function ipWeather(req, res) {
             res.status(500).send('Something broke!');
             return;
         }
-        return content;
+        res.send(content);
     })
 }
 
