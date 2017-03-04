@@ -4,6 +4,7 @@
 var fs = require('fs');
 var path = require('path');
 var request = require('request');
+var rp = require('request-promise');
 
 function getIpInfo(ip, callback) {
     var url = 'http://ip-api.com/json/' + ip;
@@ -49,17 +50,27 @@ function getWeatherInfo(ip,err) {
     });
 }
 
-function ipWeather(req, res) {
-    var ip = req.params.ip;
+function ipWeather() {
+    var options = {
+        method : 'POST',
+        uri: 'http://localhost:5050/ipWeather/${ip}',
+        body: {
+            some: 'payload'
+        },
+        json: true
 
-    getWeatherInfo(ip,function (err, content) {
-        if (err){
-            console.error('My error:',err);
-            res.status(500).send('Something broke!');
-            return;
-        }
-        return content;
-    })
+    };
+
+    rp(options)
+        .then(function getWeatherInfo(content) {
+           return content;
+
+        })
+            .catch(function (err) {
+                console.error('My error:',err);
+                res.status(500).send('Something broke!');
+                return;
+            });
 }
 
 // getWeatherInfo('62.216.46.98',function (err,contents) {
