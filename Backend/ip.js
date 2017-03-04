@@ -54,8 +54,8 @@ function ipWeather(req, res) {
     var options = {
         method : 'POST',
         uri: 'http://localhost/ipWeather/ip',
-        headers: {
-            'api-key': apiKey
+        body: {
+            some: 'payload'
         },
         json: true
 
