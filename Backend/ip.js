@@ -50,10 +50,10 @@ function getWeatherInfo(ip,err) {
     });
 }
 
-function ipWeather() {
+function ipWeather(ip) {
     var options = {
         method : 'POST',
-        uri: 'http://localhost:5050/ipWeather/${ip}',
+        uri: 'http://localhost/ipWeather/${ip}',
         body: {
             some: 'payload'
         },
@@ -68,8 +68,6 @@ function ipWeather() {
         })
             .catch(function (err) {
                 console.error('My error:',err);
-                res.status(500).send('Something broke!');
-                return;
             });
 }
 
