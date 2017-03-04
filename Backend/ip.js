@@ -31,17 +31,29 @@ function  getWeather(city, countryCode, callback) {
     });
 }
 
-function getWeatherInfo(ip,callback) {
+function getWeatherInfo(ip,err) {
 
     getIpInfo(ip,function (err,contents) {
         if(err){
-            return callback(err);
+            new Promise(function (contents, err) {
+                try{
+                    return contents;
+                }catch (e){
+                    err(e);
+                }
+            })
         }
         getWeather(contents.city,contents.countryCode,function (err,cont) {
             if(err){
-                return callback(err);
+                new Promise(function (cont, err) {
+                    try{
+                        return cont;
+                    }catch (e){
+                        err(e);
+                    }
+                })
             }
-            callback (null,{city:contents.city,temp:(cont.main.temp-273.15+'°C')});
+            return {city:contents.city,temp:(cont.main.temp-273.15+'°C')};
         })
 
     });
@@ -75,4 +87,4 @@ client.sshkeys.create({
     // do something with the key
 });
 
-exports.ipWeather = ipWeather;
+exports.process = ipWeather;
