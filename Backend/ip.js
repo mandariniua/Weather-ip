@@ -50,16 +50,18 @@ function getWeatherInfo(ip,err) {
     });
 }
 
-function ipWeather(ip) {
+function ipWeather(req, res) {
     var options = {
         method : 'POST',
-        uri: 'http://localhost/ipWeather/${ip}',
-        body: {
-            some: 'payload'
+        uri: 'http://localhost/ipWeather/ip',
+        headers: {
+            'api-key': apiKey
         },
         json: true
 
     };
+
+    var response = request.get(options);
 
     rp(options)
         .then(function getWeatherInfo(content) {
@@ -86,4 +88,4 @@ client.sshkeys.create({
     // do something with the key
 });
 
-exports.process = ipWeather();
+exports.process = ipWeather;
