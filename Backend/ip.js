@@ -53,7 +53,7 @@ function getWeatherInfo(ip,err) {
 function ipWeather(req, res) {
     var options = {
         method : 'POST',
-        uri: 'http://localhost/ipWeather/ip',
+        uri: trajectURL + '/ipWeather/ip',
         body: {
             some: 'payload'
         },
