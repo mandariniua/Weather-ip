@@ -34,8 +34,8 @@ function  getWeather(city, countryCode, callback) {
 
 function getWeatherInfo(ip) {
     return new Promise(function getIpInfo(resolve, reject) {
-        getWeather('ok',contents.city, contents.countryCode, function (cont, err) {
-            resolve({city: contents.city, temp: (cont.main.temp - 273.15 + '°C')});
+        getWeather('ok',resolve.city, resolve.countryCode, function (cont, err) {
+            resolve({city: resolve.city, temp: (cont.main.temp - 273.15 + '°C')});
         });
         getWeather('error',function (err) {
             reject(err);
