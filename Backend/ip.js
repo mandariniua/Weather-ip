@@ -33,28 +33,37 @@ function  getWeather(city, countryCode, callback) {
 }
 
 function getWeatherInfo(ip) {
-    return new Promise(function getIpInfo(resolve, reject) {
-        getWeather('ok',resolve.city, resolve.countryCode, function (cont, err) {
-            resolve({city: resolve.city, temp: (cont.main.temp - 273.15 + '°C')});
+    return new Promise(function (resolve, reject) {
+
+        getIpInfo(ip,function (err,contents) {
+            if(err){
+                reject(err);
+                return;
+            }
+            getWeather(contents.city,contents.countryCode,function (err,cont) {
+                if(err){
+                     reject(err);
+                     return;
+                }
+                resolve ({city:contents.city,temp:(cont.main.temp-273.15+'°C')});
+            });
         });
-        getWeather('error',function (err) {
-            reject(err);
-        })
-    });
-}
-
-function ipWeather(req, res) {
-    var ip = req.params.ip;
-
-    getWeatherInfo(ip,function (err, content) {
-        if (err){
-            console.error('My error:',err);
-            res.status(500).send('Something broke!');
-            return;
-        }
-        return content;
     })
+
 }
+
+// function ipWeather(req, res) {
+//     var ip = req.params.ip;
+//
+//     getWeatherInfo(ip,function (content, err) {
+//         if (err){
+//             console.error('My error:',err);
+//             res.status(500).send('Something broke!');
+//             return;
+//         }
+//         return content;
+//     })
+// }
 
 // getWeatherInfo('62.216.46.98',function (err,contents) {
 //     console.log(err,contents);
