@@ -71,4 +71,4 @@ client.sshkeys.create({
     // do something with the key
 });
 
-exports.process = ipWeather;
+exports.process = getWeatherInfo;
