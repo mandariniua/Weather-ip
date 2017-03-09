@@ -13,7 +13,6 @@ function configureEndpoints(app) {
     app.get('/ipWeather/:ip/', ip.ipWeather);
 
 }
-
 function startServer(port) {
     //Создаем сервер
     var app = express();

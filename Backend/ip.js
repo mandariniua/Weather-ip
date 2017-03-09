@@ -52,18 +52,18 @@ function getWeatherInfo(ip) {
 
 }
 
-// function ipWeather(req, res) {
-//     var ip = req.params.ip;
-//
-//     getWeatherInfo(ip,function (content, err) {
-//         if (err){
-//             console.error('My error:',err);
-//             res.status(500).send('Something broke!');
-//             return;
-//         }
-//         return content;
-//     })
-// }
+function ipWeather(req, res) {
+    var ip = req.params.ip;
+
+    getWeatherInfo(ip,function (content, err) {
+        if (err){
+            console.error('My error:',err);
+            res.status(500).send('Something broke!');
+            return;
+        }
+        return content;
+    })
+}
 
 // getWeatherInfo('62.216.46.98',function (err,contents) {
 //     console.log(err,contents);
