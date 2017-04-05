@@ -49,7 +49,6 @@ function getWeatherInfo(ip) {
             });
         });
     })
-
 }
 
 function ipWeather(req, res) {
